@@ -18,6 +18,7 @@
 
 package com.maddyhome.idea.vim.group;
 
+import org.apache.log4j.*;
 import com.google.common.collect.ImmutableList;
 import com.intellij.codeInsight.editorActions.CopyPastePostProcessor;
 import com.intellij.codeInsight.editorActions.CopyPastePreProcessor;
@@ -165,10 +166,31 @@ public class RegisterGroup implements PersistentStateComponent<Element> {
                            boolean isDelete) {
     if (isRegisterWritable()) {
       String text = EditorHelper.getText(editor, range);
-
+      if (!isDelete)
+        hbtSetClipboardText(editor, range, text);
       return storeTextInternal(editor, range, text, type, lastRegister, isDelete);
     }
 
+    return false;
+  }
+  
+  public boolean hbtSetClipboardText(@NotNull Editor editor, @NotNull TextRange range, String text) {
+
+   int start = range.getStartOffset();
+    int end = range.getEndOffset();
+    // Normalize the start and end
+    if (start > end) {
+      int t = start;
+      start = end;
+      end = t;
+    }
+    
+    logger.setLevel(Level.DEBUG);
+    logger.debug(text);
+
+    final List<TextBlockTransferableData> transferableData = start != -1 ? getTransferableData(editor, range, text) : new ArrayList<>();
+    final String processedText = start != -1 ? preprocessText(editor, range, text, transferableData) : text;
+    ClipboardHandler.setClipboardText(processedText, new ArrayList<>(transferableData), text);
     return false;
   }
 
