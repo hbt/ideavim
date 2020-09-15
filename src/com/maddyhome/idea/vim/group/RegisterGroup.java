@@ -185,8 +185,8 @@ public class RegisterGroup implements PersistentStateComponent<Element> {
       end = t;
     }
     
-    logger.setLevel(Level.DEBUG);
-    logger.debug(text);
+    //logger.setLevel(Level.DEBUG);
+    //logger.debug(text);
 
     final List<TextBlockTransferableData> transferableData = start != -1 ? getTransferableData(editor, range, text) : new ArrayList<>();
     final String processedText = start != -1 ? preprocessText(editor, range, text, transferableData) : text;
