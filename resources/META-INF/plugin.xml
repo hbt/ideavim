@@ -1,5 +1,5 @@
 <idea-plugin url="https://plugins.jetbrains.com/plugin/164" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <name>IdeaVim</name>
+  <name>MyIdeaVim</name>
   <id>IdeaVIM</id>
   <change-notes><![CDATA[
       <ul>
