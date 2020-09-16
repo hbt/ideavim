@@ -100,5 +100,9 @@
     <action id="VimFindActionIdAction"
             class="com.maddyhome.idea.vim.listener.FindActionIdAction" text="Track Action Ids"
             description="Starts tracking ids of executed actions"/>
+      <action id="SwitchTab3Action" class="com.maddyhome.idea.vim.action.tab.SwitchTab3Action" text="SwitchTab3Action"
+              description="SwitchTab3Action">
+          <add-to-group group-id="TabsActions" anchor="first"/>
+      </action>
   </actions>
 </idea-plugin>
