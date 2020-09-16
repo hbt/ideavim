@@ -18,6 +18,7 @@
 
 package com.maddyhome.idea.vim.group;
 
+import com.intellij.ide.CopyPasteManagerEx;
 import org.apache.log4j.*;
 import com.google.common.collect.ImmutableList;
 import com.intellij.codeInsight.editorActions.CopyPastePostProcessor;
@@ -67,6 +68,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -184,6 +186,9 @@ public class RegisterGroup implements PersistentStateComponent<Element> {
       start = end;
       end = t;
     }
+
+    CopyPasteManagerEx copyPasteManager = CopyPasteManagerEx.getInstanceEx();
+    copyPasteManager.setContents(new StringSelection(text));
     
     //logger.setLevel(Level.DEBUG);
     //logger.debug(text);
