@@ -26,11 +26,12 @@ import org.apache.log4j.Logger;
 import javax.swing.*;
 import java.util.*;
 
+// TODO(hbt) NEXT deploy
+// TODO(hbt) NEXT cleanup
+// TODO(hbt) NEXT disable log
 public abstract class ToDoCommonAction extends AnAction {
 
-  //    protected static final Logger LOG = Logger.getInstance(TodoPanel.class);
   public static Logger log = MyLogger.getInstance();
-  //  public Logger log = new Log4jFactory(new File("/tmp/idea.log"), "sa").getLoggerInstance("cat");
   public static HashMap<Project, Integer> last = new HashMap();
   /**
    * @deprecated
@@ -119,9 +120,9 @@ public abstract class ToDoCommonAction extends AnAction {
     ArrayList<SmartTodoItemPointer> mytodos = getSmartTodoItemPointers(project, pattern);
     ArrayList<SmartTodoItemPointer> nextTodos = filterNextTodosFromMyTodos(pattern, mytodos);
     ArrayList<SmartTodoItemPointer> sortedTodos = sortTodoPointers(nextTodos);
-    
+
     log.debug("finalized list");
-    for(SmartTodoItemPointer sp: sortedTodos) {
+    for (SmartTodoItemPointer sp : sortedTodos) {
       log.debug(getTodoText(sp));
     }
 
@@ -142,24 +143,13 @@ public abstract class ToDoCommonAction extends AnAction {
     ArrayList<SmartTodoItemPointer> ret = new ArrayList<>();
 
     TreeMap<String, SmartTodoItemPointer> numberTodo = new TreeMap();
-    ArrayList<SmartTodoItemPointer> stringTodos = new ArrayList<>();
 
     for (int i = 0; i < todos.size(); i++) {
       SmartTodoItemPointer todo = todos.get(i);
-      String text = todo.getTodoItem().getFile().getText();
-      int startOffset = todo.getTodoItem().getTextRange().getStartOffset();
-      String strtodo = text.substring(startOffset, todo.getTodoItem().getTextRange().getEndOffset());
-      for (String pt : this.getTodoPatternsList()) {
-        strtodo = strtodo.replace(pt, "").trim();
-      }
 
-      if (todoHasNumber(strtodo)) {
-        Version number = extractVersion(strtodo);
-        numberTodo.put(number.get(), todo);
-        log.debug(number);
-      } else {
-        stringTodos.add(todo);
-      }
+
+      Version number = extractVersion(todo);
+      numberTodo.put(number.get(), todo);
     }
 
     String[] keys = numberTodo.keySet().toArray(new String[0]);
@@ -177,9 +167,6 @@ public abstract class ToDoCommonAction extends AnAction {
       log.debug(getTodoText(stip));
     }
 
-    for (SmartTodoItemPointer stringTodo : stringTodos) {
-      ret.add(stringTodo);
-    }
 
     return ret;
   }
@@ -189,9 +176,15 @@ public abstract class ToDoCommonAction extends AnAction {
     return todoPatterns;
   }
 
-  private Version extractVersion(String strtodo) {
+  private Version extractVersion(SmartTodoItemPointer todo) {
     Version ret = null;
 
+    String text = todo.getTodoItem().getFile().getText();
+    int startOffset = todo.getTodoItem().getTextRange().getStartOffset();
+    String strtodo = text.substring(startOffset, todo.getTodoItem().getTextRange().getEndOffset());
+    for (String pt : this.getTodoPatternsList()) {
+      strtodo = strtodo.replace(pt, "").trim();
+    }
 
     String[] parts = strtodo.trim().split(" ");
     if (parts.length > 0) {
@@ -204,13 +197,17 @@ public abstract class ToDoCommonAction extends AnAction {
       }
     }
 
+    if (ret == null) {
+      String fileid = Integer.toString(todo.getTodoItem().getFile().getVirtualFile().getCanonicalPath().hashCode());
+      String offset = Integer.toString(todo.getRangeMarker().getStartOffset());
+      ret = new Version("19999." + fileid + "." + offset);
+    }
+    
+
 
     return ret;
   }
 
-  private boolean todoHasNumber(String strtodo) {
-    return extractVersion(strtodo) != null;
-  }
 
   private ArrayList createSortedNextTodos(ArrayList<SmartTodoItemPointer> nextTodos) {
     ArrayList ret = new ArrayList();
