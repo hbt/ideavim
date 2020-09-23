@@ -39,7 +39,8 @@ public class MyLogger {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    log.setLevel(Level.DEBUG);
+    // TODO(hbt) NEXT toggle log
+//    log.setLevel(Level.DEBUG);
     return log;
   }
   

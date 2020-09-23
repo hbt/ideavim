@@ -26,21 +26,13 @@ import org.apache.log4j.Logger;
 import javax.swing.*;
 import java.util.*;
 
-// TODO(hbt) NEXT deploy
-// TODO(hbt) NEXT cleanup
-// TODO(hbt) NEXT disable log
+
 public abstract class ToDoCommonAction extends AnAction {
 
   public static Logger log = MyLogger.getInstance();
   public static HashMap<Project, Integer> last = new HashMap();
-  /**
-   * @deprecated
-   */
-  static HashMap<String, ArrayList<TodoItemNode>> cache = new HashMap<>();
-  private Project project;
 
   public void viewTodos(ArrayList todosMap) {
-
     todosMap.forEach((todo) -> {
 
       Object[] nextItem = (Object[]) todo;
@@ -73,58 +65,19 @@ public abstract class ToDoCommonAction extends AnAction {
     return nextIndex;
   }
 
-
-  public void recursiveGet(Project p, AbstractTreeStructure structure, Object obj) {
-    Object[] children = structure.getChildElements(obj);
-    for (int i = 0; i < children.length; i++) {
-      //add 
-      if (children[i] instanceof TodoItemNode) {
-
-        ArrayList<TodoItemNode> todoItemNodes = cache.get(p.getLocationHash());
-        todoItemNodes.add((TodoItemNode) children[i]);
-      }
-      recursiveGet(p, structure, children[i]);
-    }
-  }
-
-  protected MyTreeBuilder createTreeBuilder(JTree tree, Project project) {
-
-    String preselect = PropertiesComponent.getInstance(project).getValue("TODO_SCOPE");
-    ScopeChooserCombo myScopes = new ScopeChooserCombo(project, false, true, preselect);
-    myScopes.setCurrentSelection(false);
-    myScopes.setUsageView(false);
-
-//        ScopeBasedTodosTreeBuilder builder = new ScopeBasedTodosTreeBuilder(tree, project, myScopes);
-    MyTreeBuilder builder = new MyTreeBuilder(tree, project, myScopes);
-    builder.init();
-    return builder;
-
-    // Note(hbt) fails because method is protected -- have to add the MyTreeBuilder class to the jar https://stackoverflow.com/questions/7076414/java-lang-illegalaccesserror-tried-to-access-method/7076538
-
-//            DefaultTreeModel model = new DefaultTreeModel(new DefaultMutableTreeNode());
-//            JTree tree = new Tree(model);
-//            MyTreeBuilder builder = this.createTreeBuilder(tree, project);
-//            TodoFilter filter = new TodoFilter();
-//            TodoPattern todoPattern = new TodoPattern("TodoAttributesUtil.createDefault()", TodoAttributesUtil.createDefault(), false);
-//            filter.addTodoPattern(todoPattern);
-//            builder.setTodoFilter2(filter);
-//            builder.init();
-  }
-
   public ArrayList buildList(Project project) {
-    this.project = project;
     ArrayList ret = new ArrayList();
-    // TODO(hbt) NEXT add check when pattern is not in IDE  and print error . Otherwise, it fails silently and returns nothing
+    // TODO(hbt) ENHANCE add check when pattern is not in IDE  and print error . Otherwise, it fails silently and returns nothing
     String pattern = "\\b.*todo\\b.*hbt\\b.*NEXT\\b.*";
 
     ArrayList<SmartTodoItemPointer> mytodos = getSmartTodoItemPointers(project, pattern);
     ArrayList<SmartTodoItemPointer> nextTodos = filterNextTodosFromMyTodos(pattern, mytodos);
     ArrayList<SmartTodoItemPointer> sortedTodos = sortTodoPointers(nextTodos);
 
-    log.debug("finalized list");
-    for (SmartTodoItemPointer sp : sortedTodos) {
-      log.debug(getTodoText(sp));
-    }
+//    log.debug("finalized list");
+//    for (SmartTodoItemPointer sp : sortedTodos) {
+//      log.debug(getTodoText(sp));
+//    }
 
     ret = createSortedNextTodos(sortedTodos);
 
@@ -198,11 +151,10 @@ public abstract class ToDoCommonAction extends AnAction {
     }
 
     if (ret == null) {
-      String fileid = Integer.toString(todo.getTodoItem().getFile().getVirtualFile().getCanonicalPath().hashCode());
-      String offset = Integer.toString(todo.getRangeMarker().getStartOffset());
+      String fileid = Integer.toString(Math.abs(todo.getTodoItem().getFile().getVirtualFile().getCanonicalPath().hashCode()));
+      String offset = Integer.toString(Math.abs(todo.getRangeMarker().getStartOffset()));
       ret = new Version("19999." + fileid + "." + offset);
     }
-    
 
 
     return ret;
@@ -213,10 +165,15 @@ public abstract class ToDoCommonAction extends AnAction {
     ArrayList ret = new ArrayList();
     for (int i = 0; i < nextTodos.size(); i++) {
       SmartTodoItemPointer todo = nextTodos.get(i);
-      // TODO(hbt) NEXT add the starter offset to be the first word instead of first character
-      ret.add(new Object[]{todo.getTodoItem().getFile().getVirtualFile(), todo.getRangeMarker().getStartOffset()});
+      ret.add(new Object[]{todo.getTodoItem().getFile().getVirtualFile(), calculateStartOffset(todo)});
     }
     return ret;
+  }
+
+  private Integer calculateStartOffset(SmartTodoItemPointer todo) {
+    int startOffset = todo.getRangeMarker().getStartOffset();
+    startOffset += getTodoPatternsList()[0].length() + 1;
+    return startOffset;
   }
 
   private ArrayList<SmartTodoItemPointer> filterNextTodosFromMyTodos(String pattern, ArrayList<SmartTodoItemPointer> mytodos) {
@@ -262,175 +219,4 @@ public abstract class ToDoCommonAction extends AnAction {
 
     return todos;
   }
-
-  public ArrayList buildList2(Project project) {
-    ArrayList todosMap = new ArrayList();
-    String pattern = "\\b.*todo\\b.*hbt\\b.*NEXT\\b.*";
-    String[] todoPatterns = {"TODO(hbt) NEXT", "TODO[hbt] NEXT"};
-
-
-    ArrayList<SmartTodoItemPointer> todos = new ArrayList();
-
-    {
-
-
-    }
-    log.debug("BEGIN build tree");
-    {
-
-      AllTodosTreeBuilder builder = new AllTodosTreeBuilder(new Tree(), project);
-      builder.init();
-
-
-      AbstractTreeStructure structure = builder.getTodoTreeStructure();
-
-      PsiFile[] filesWithTodoItems = ((TodoTreeStructure) structure).getSearchHelper().findFilesWithTodoItems();
-      for (PsiFile file : filesWithTodoItems) {
-
-        TodoPattern todoPattern = new TodoPattern(pattern, TodoAttributesUtil.createDefault(), false);
-
-//                TodoItem[] todoItems1 = ((TodoTreeStructure) structure).getSearchHelper().findTodoItems(file);
-//                for (TodoItem pt : todoItems1) {
-//                    Document document = PsiDocumentManager.getInstance(project).getDocument(file);
-//                    SmartTodoItemPointer smartTodoItemPointer = new SmartTodoItemPointer(pt, document);
-//                    todos.add(smartTodoItemPointer);
-//                }
-
-        int todoItemsCount = ((TodoTreeStructure) structure).getSearchHelper().getTodoItemsCount(file, todoPattern);
-        if (todoItemsCount > 0) {
-          log.debug(file.getVirtualFile().getCanonicalPath());
-
-          TodoItem[] todoItems = ((TodoTreeStructure) structure).getSearchHelper().findTodoItems(file);
-
-          for (TodoItem pt : todoItems) {
-            if (pt.getPattern().getPatternString().equalsIgnoreCase(pattern)) {
-              Document document = PsiDocumentManager.getInstance(project).getDocument(file);
-              SmartTodoItemPointer smartTodoItemPointer = new SmartTodoItemPointer(pt, document);
-              todos.add(smartTodoItemPointer);
-            }
-          }
-
-        }
-
-      }
-
-    }
-
-    log.debug("END build tree");
-    log.debug("tree size" + todos.size());
-
-    log.debug("looking for matches to filter");
-    ArrayList<SmartTodoItemPointer> nextTodos = new ArrayList();
-    {
-      // filter
-      todos.forEach((todo) -> {
-        String patternString = todo.getTodoItem().getPattern().getPatternString();
-        if (patternString.equals(pattern)) {
-          nextTodos.add(todo);
-        }
-      });
-      log.debug("Found " + nextTodos.size() + " matches to filter");
-    }
-
-    ArrayList<SmartTodoItemPointer> sortedTodos = new ArrayList();
-    {
-      // filter with/without number
-
-      ArrayList numberedTodos = new ArrayList();
-      ArrayList<SmartTodoItemPointer> strTodos = new ArrayList();
-      int maxNbDots = 0;
-      {
-
-        for (int i = 0; i < nextTodos.size(); i++) {
-          SmartTodoItemPointer todo = nextTodos.get(i);
-          String text = todo.getTodoItem().getFile().getText();
-          int startOffset = todo.getTodoItem().getTextRange().getStartOffset();
-          String strtodo = text.substring(startOffset, todo.getTodoItem().getTextRange().getEndOffset());
-          for (String pt : todoPatterns) {
-            strtodo = strtodo.replace(pt, "").trim();
-          }
-
-          String[] parts = strtodo.split(" ");
-          if (parts.length > 0) {
-            String first = parts[0];
-            int nbDots = first.split("\\.").length - 1;
-            if (nbDots > maxNbDots) {
-              maxNbDots = nbDots;
-            }
-            String bigNumber = first.replace(".", "").trim();
-            int nb = -1;
-            try {
-
-              nb = Integer.parseInt(bigNumber);
-            } catch (Exception ex) {
-              log.debug("cannot parse " + bigNumber + " " + strtodo);
-            }
-            if (nb == -1) {
-              strTodos.add(todo);
-              log.debug("strtodo: " + strtodo);
-            } else {
-              numberedTodos.add(new Object[]{todo, nb, nbDots});
-//                                nb = nb * 10^nbDots;
-//                                log.debug("" + nb);
-              log.debug("nb todo: " + strtodo);
-            }
-          }
-        }
-
-
-      }
-
-      // sort list with numbers
-      TreeMap<Integer, SmartTodoItemPointer> map = new TreeMap();
-      {
-
-        log.debug("" + maxNbDots);
-        for (int i = 0; i < numberedTodos.size(); i++) {
-          Object[] items = (Object[]) numberedTodos.get(i);
-          SmartTodoItemPointer todo = (SmartTodoItemPointer) items[0];
-          Integer nb = (Integer) items[1];
-          Integer nbDots = (Integer) items[2];
-
-          int posi = (int) (nb * Math.pow(10, maxNbDots - nbDots));
-          log.debug("" + posi);
-
-          map.put(posi, todo);
-        }
-
-        Iterator<Integer> iterator = map.navigableKeySet().iterator();
-        while (iterator.hasNext()) {
-          Integer next = iterator.next();
-          SmartTodoItemPointer todo = map.get(next);
-
-          String text = todo.getTodoItem().getFile().getText();
-          int startOffset = todo.getTodoItem().getTextRange().getStartOffset();
-          String strtodo = text.substring(startOffset, todo.getTodoItem().getTextRange().getEndOffset());
-          log.debug("ordered" + strtodo);
-
-          sortedTodos.add(todo);
-        }
-
-      }
-
-      // add without numbers at the bottom
-      {
-        strTodos.forEach((todo) -> {
-          sortedTodos.add(todo);
-        });
-      }
-    }
-
-    {
-      // map list
-      for (int i = 0; i < sortedTodos.size(); i++) {
-        SmartTodoItemPointer todo = sortedTodos.get(i);
-        int startOffset = todo.getTodoItem().getTextRange().getStartOffset();
-        int lineStartOffset = todo.getDocument().getLineNumber(startOffset);
-        todosMap.add(new Object[]{todo.getTodoItem().getFile().getVirtualFile(), todo.getRangeMarker().getStartOffset()});
-      }
-    }
-
-    return todosMap;
-  }
-
 }
