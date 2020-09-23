@@ -40,8 +40,8 @@ public class SwitchTab3Action extends AnAction {
 
   @Override
   public void actionPerformed(AnActionEvent e) {
-//    logger.setLevel(Level.DEBUG);
-//    logger.debug("switch3");
+    logger.setLevel(Level.DEBUG);
+    logger.debug("switch3");
 
     Project project = e.getProject();
 
