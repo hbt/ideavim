@@ -41,9 +41,7 @@ public class CurrentTodoAction extends ToDoCommonAction {
     // get last item
     int nextIndex = getLastItem(e);
 
-    if (log.isDebugEnabled()) {
       viewTodos(todosMap);
-    }
 
     jump(e, todosMap, nextIndex);
   }

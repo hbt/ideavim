@@ -29,7 +29,6 @@ public class PreviousTodoAction extends ToDoCommonAction {
 
   @Override
   public void actionPerformed(AnActionEvent e) {
-    log.setLevel(Level.DEBUG);
     log.debug("init prev");
 
     Project project = e.getProject();
@@ -48,9 +47,7 @@ public class PreviousTodoAction extends ToDoCommonAction {
       nextIndex = todosMap.size() - 1;
     }
 
-    if (log.isDebugEnabled()) {
       viewTodos(todosMap);
-    }
        
     jump(e, todosMap, nextIndex);
   }
