@@ -113,5 +113,7 @@
       <add-to-group group-id="TabsActions" anchor="first"/>
     </action>
 
+      <action id="com.hbtlabs.SaveCaretOffset" class="com.maddyhome.idea.vim.action.tab.SaveCaretOffsetAction"
+              text="SaveCaretOffset" description="saves caret offset into file /tmp/ideavim-caret-position.txt"/>
   </actions>
 </idea-plugin>
