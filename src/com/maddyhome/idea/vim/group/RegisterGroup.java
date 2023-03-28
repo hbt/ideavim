@@ -178,6 +178,8 @@ public class RegisterGroup implements PersistentStateComponent<Element> {
   
   public boolean hbtSetClipboardText(@NotNull Editor editor, @NotNull TextRange range, String text) {
 
+    // TODO(hbt) NEXT fix 
+    
    int start = range.getStartOffset();
     int end = range.getEndOffset();
     // Normalize the start and end

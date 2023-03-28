@@ -18,6 +18,8 @@
 
 package com.maddyhome.idea.vim.hbtlabs.lib;
 
+// TODO(hbt) NEXT delete folder
+
 
 import com.intellij.openapi.diagnostic.Log4jBasedLogger;
 import org.apache.log4j.Level;

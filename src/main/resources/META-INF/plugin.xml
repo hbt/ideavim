@@ -128,20 +128,17 @@
 <!--            text="SwitchTab3Action"-->
 <!--            description="SwitchTab3Action">-->
 <!--      <add-to-group group-id="TabsActions" anchor="first"/>-->
-      
-      
-      
 <!--    </action>-->
     
     <action id="com.hbtlabs.NextTodo" class="com.maddyhome.idea.vim.action.tab.NextTodoAction" text="NextTodo"/>
     
-<!--    <action id="com.hbtlabs.PreviousTodo" class="com.maddyhome.idea.vim.action.tab.PreviousTodoAction"-->
-<!--            text="PreviousTodo"/>-->
+    <action id="com.hbtlabs.PreviousTodo" class="com.maddyhome.idea.vim.action.tab.PreviousTodoAction"
+            text="PreviousTodo"/>
     
-<!--    <action id="com.hbtlabs.CurrentTodo" class="com.maddyhome.idea.vim.action.tab.CurrentTodoAction"-->
-<!--            text="CurrentTodo">-->
-<!--      <add-to-group group-id="TabsActions" anchor="first"/>-->
-<!--    </action>-->
+    <action id="com.hbtlabs.CurrentTodo" class="com.maddyhome.idea.vim.action.tab.CurrentTodoAction"
+            text="CurrentTodo">
+      <add-to-group group-id="TabsActions" anchor="first"/>
+    </action>
 
       <action id="com.hbtlabs.SaveCaretOffset" class="com.maddyhome.idea.vim.action.tab.SaveCaretOffsetAction"
               text="SaveCaretOffset" description="saves caret offset into file /tmp/ideavim-caret-position.txt"/>

@@ -20,7 +20,7 @@ package com.maddyhome.idea.vim.action.tab;
 
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
-import com.maddyhome.idea.vim.hbtlabs.lib.ToDoCommonAction;
+import com.maddyhome.idea.vim.action.hbtlabs.lib.ToDoCommonAction;
 
 import java.util.ArrayList;
 
@@ -28,8 +28,6 @@ public class CurrentTodoAction extends ToDoCommonAction {
 
   @Override
   public void actionPerformed(AnActionEvent e) {
-    log.debug("current todo");
-    log.debug("init prev");
 
     Project project = e.getProject();
     ArrayList todosMap = todosMap = buildList(project);
