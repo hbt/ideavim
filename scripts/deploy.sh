@@ -15,3 +15,4 @@ unzip ideavim.zip
 
 
 # // TODO(hbt) NEXT apply to all IDEs
+# // TODO(hbt) NEXT add the build zip to the release in github
