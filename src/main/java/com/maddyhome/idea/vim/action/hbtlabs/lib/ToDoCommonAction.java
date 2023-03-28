@@ -190,8 +190,6 @@ public abstract class ToDoCommonAction extends AnAction {
 
     ArrayList<PsiFile> psiFiles = new ArrayList<>();
     searchHelper.processFilesWithTodoItems(psiFile -> {
-      // TODO(hbt) NEXT rm 
-      logger.info(psiFile.getVirtualFile().getPath());
       psiFiles.add(psiFile);
       return true;
     });

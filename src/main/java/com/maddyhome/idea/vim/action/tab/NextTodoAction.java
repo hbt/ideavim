@@ -42,7 +42,6 @@ public class NextTodoAction extends ToDoCommonAction {
       return;
     }
 
-    // TODO(hbt) NEXT asd
     // get last item
     int nextIndex = getLastItem(e);
     nextIndex++;

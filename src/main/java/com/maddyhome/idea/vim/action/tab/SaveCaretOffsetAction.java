@@ -22,6 +22,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -32,25 +33,29 @@ import java.io.IOException;
 
 public class SaveCaretOffsetAction extends AnAction {
 
+  private static final Logger logger = Logger.getInstance(SaveCaretOffsetAction.class.getName());
+
   @Override
   public void actionPerformed(AnActionEvent e) {
     DataContext dataContext = e.getDataContext();
     Editor editor = CommonDataKeys.EDITOR.getData(dataContext);
-    // TODO(hbt) NEXT fix warnings
-    VirtualFile file = FileDocumentManager.getInstance().getFile(editor.getDocument());
-    if (editor != null && file != null) {
+    if (editor.getDocument() != null) {
+      VirtualFile file = FileDocumentManager.getInstance().getFile(editor.getDocument());
+      if (file != null) {
+        int offset = editor.getCaretModel().getCurrentCaret().getOffset();
+        String filepath = file.getCanonicalPath();
+        int line = editor.getCaretModel().getCurrentCaret().getLogicalPosition().line;
+        int column = editor.getCaretModel().getCurrentCaret().getLogicalPosition().column;
 
-      int offset = editor.getCaretModel().getCurrentCaret().getOffset();
-      String filepath = file.getCanonicalPath();
-      int line = editor.getCaretModel().getCurrentCaret().getLogicalPosition().line;
-      int column = editor.getCaretModel().getCurrentCaret().getLogicalPosition().column;
-
-      try {
-        FileWriter fw = new FileWriter(new File("/tmp/ideavim-caret-position.txt"));
-        fw.write(filepath + "\n" + offset + "\n" + line + "\n" + column);
-        fw.close();
-      } catch (IOException ioException) {
-        ioException.printStackTrace();
+        try {
+          FileWriter fw = new FileWriter(new File("/tmp/ideavim-caret-position.txt"));
+          fw.write(filepath + "\n" + offset + "\n" + line + "\n" + column);
+          fw.close();
+        }
+        catch (IOException ioException) {
+          logger.info(ioException.toString());
+          ioException.printStackTrace();
+        }
       }
     }
 
