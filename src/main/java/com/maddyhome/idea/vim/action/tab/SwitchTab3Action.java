@@ -18,10 +18,8 @@
 
 package com.maddyhome.idea.vim.action.tab;
 
-import com.intellij.ide.actions.Switcher;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.impl.EditorHistoryManager;
@@ -30,32 +28,42 @@ import com.intellij.openapi.fileEditor.impl.FileEditorManagerImpl;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.maddyhome.idea.vim.api.ExecutionContext;
+import com.maddyhome.idea.vim.api.VimEditor;
 import org.apache.log4j.Level;
 import org.jdom.Element;
 
-import java.util.List;
+import static com.maddyhome.idea.vim.api.VimInjectorKt.injector;
 
 public class SwitchTab3Action extends AnAction {
   private Logger logger = Logger.getInstance(SwitchTab3Action.class);
 
   @Override
   public void actionPerformed(AnActionEvent e) {
-    logger.setLevel(Level.DEBUG);
-    logger.debug("switch3");
 
     Project project = e.getProject();
 
+    // Note(hbt) cant call Switcher.SwitcherPanel
+    // so this is a hack to remove the recent files from the history, replace them with the active tabs, display the recent files switcher then put the recent files back
+    
     EditorHistoryManager ehm = EditorHistoryManager.getInstance(project);
     Element recentFilesState = ehm.getState();
     ehm.removeAllFiles();
 
-    final FileEditorManagerImpl editorManager = (FileEditorManagerImpl) FileEditorManager.getInstance(project);
+
+    final FileEditorManagerImpl editorManager = (FileEditorManagerImpl)FileEditorManager.getInstance(project);
     for (Pair<VirtualFile, EditorWindow> pair : editorManager.getSelectionHistory()) {
       logger.debug(pair.first.getCanonicalPath());
       ehm.updateHistoryEntry(pair.first, false);
     }
 
-    Switcher.createAndShowSwitcher(e, "switch", IdeActions.ACTION_RECENT_FILES, false, true);
+
+    if (injector.getEditorGroup().localEditors().toArray().length > 0) {
+      ExecutionContext executionContext = injector.getExecutionContextManager()
+        .onEditor((VimEditor)injector.getEditorGroup().localEditors().toArray()[0], null);
+      injector.getActionExecutor().executeAction("RecentFiles", executionContext);
+   
+    }
 
     ehm.loadState(recentFilesState);
 

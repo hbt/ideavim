@@ -188,9 +188,6 @@ public abstract class ToDoCommonAction extends AnAction {
     AbstractTreeStructure structure = builder.getTodoTreeStructure();
     PsiTodoSearchHelper searchHelper = ((TodoTreeStructure)structure).getSearchHelper();
 
-    // TODO(hbt) NEXT rm
-    PsiFile[] filesWithTodoItems = searchHelper.findFilesWithTodoItems();
-
     ArrayList<PsiFile> psiFiles = new ArrayList<>();
     searchHelper.processFilesWithTodoItems(psiFile -> {
       // TODO(hbt) NEXT rm 

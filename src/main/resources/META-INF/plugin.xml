@@ -124,11 +124,11 @@
 
     <action id="VimFindActionIdAction" class="com.maddyhome.idea.vim.listener.FindActionIdAction"/>
     
-<!--    <action id="com.hbtlabs.SwitchTab3Action" class="com.maddyhome.idea.vim.action.tab.SwitchTab3Action"-->
-<!--            text="SwitchTab3Action"-->
-<!--            description="SwitchTab3Action">-->
-<!--      <add-to-group group-id="TabsActions" anchor="first"/>-->
-<!--    </action>-->
+    <action id="com.hbtlabs.SwitchTab3Action" class="com.maddyhome.idea.vim.action.tab.SwitchTab3Action"
+            text="SwitchTab3Action"
+            description="SwitchTab3Action">
+      <add-to-group group-id="TabsActions" anchor="first"/>
+    </action>
     
     <action id="com.hbtlabs.NextTodo" class="com.maddyhome.idea.vim.action.tab.NextTodoAction" text="NextTodo"/>
     
