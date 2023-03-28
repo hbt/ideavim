@@ -1,8 +1,11 @@
 [![TeamCity Build][teamcity-build-status-svg]][teamcity-build-status]
 
-IdeaVim is an open source project created by 60+ contributors. Would you like to make it even better? That’s wonderful!
+IdeaVim is an open source project created by 80+ contributors. Would you like to make it even better? That’s wonderful!
 
 This page is created to help you start contributing. And who knows, maybe in a few days this project will be brighter than ever!
+
+:warning: The plugin is currently under a huge refactoring aiming to split into vim-engine and IdeaVim in order to
+support the new [Fleet IDE](https://www.jetbrains.com/fleet/). Please see [Fleet refactoring](#Fleet-refactoring).
 
 ## Before you begin
 
@@ -26,7 +29,12 @@ OK, ready to do some coding?
 * Fork the repository and clone it to the local machine.
 * Open the project with IntelliJ IDEA.
 
-Yoo hoo! You’re all set to begin contributing. Here are some useful gradle commands:
+Yoo hoo! You’re all set to begin contributing.
+We've prepared some useful configurations for you:
+
+![Prepared configurations light](assets/contributing/configs-light.png#gh-light-mode-only)![Prepared configurations dark](assets/contributing/configs-dark.png#gh-dark-mode-only)
+
+And here are useful gradle commands:
 
 * `./gradlew runIde` — start the dev version of IntelliJ IDEA with IdeaVim installed.
 * `./gradlew test` — run tests.
@@ -56,7 +64,9 @@ If you are looking for:
 
 - Ex commands (`:set`, `:s`, `:nohlsearch`):
     - Any particular ex command: package `com.maddyhome.idea.vim.ex.handler`.
-    - Ex command executor: `CommandHandler`.
+    - Vim script grammar: `Vimscript.g4`.
+    - Vim script parsing: package `com.maddyhome.idea.vim.vimscript.parser`.
+    - Vim script executor: `Executor`.
 
 - Extensions:
     - Extensions handler: `VimExtensionHandler`.
@@ -64,7 +74,7 @@ If you are looking for:
 
 - Common features:
     - State machine. How every particular keystroke is parsed in IdeaVim: `KeyHandler.handleKey()`.
-    - Options (`incsearch`, `iskeyword`, `relativenumber`): `OptionsManager`.
+    - Options (`incsearch`, `iskeyword`, `relativenumber`): `OptionServiceImpl`.
     - Plugin startup: `PluginStartup`.
     - Notifications: `NotificationService`.
     - Status bar icon: `StatusBar.kt`.
@@ -110,6 +120,17 @@ so you can reuse your `.vimrc` settings.
 We also support proper command mappings (functions are mapped to `<Plug>...`), the operator function (`OperatorFunction`), and so on.
 - Magic is supported as well. See `Magic`.
 
+
+## Fleet refactoring
+At the moment, IdeaVim is under an active refactoring aiming to split IdeaVim into two modules: vim-engine and IdeaVim.
+
+If you develop a plugin that depends on IdeaVim: We have an instrument to check that our changes don't affect
+the plugins in the marketplace. Also, we commit to support currently used API at least till the end of 2022.
+If you still encounter any issues with the newer versions of IdeaVim, please [contact maintainers](https://github.com/JetBrains/ideavim#contact-maintainers).
+We kindly ask you not to use anything from the new API (like `VimEditor`, `injector`) because at the moment we don't
+guarantee the compatibility of this API in the future versions.
+
+
 -----
 
 ### I read the whole page but something is still unclear.
@@ -131,10 +152,10 @@ This is just terrible. [You know what to do](https://github.com/JetBrains/ideavi
 * [Continuous integration builds](https://teamcity.jetbrains.com/project.html?projectId=IdeaVim&guest=1)
 * [Bug tracker](https://youtrack.jetbrains.com/issues/VIM)
 * [Chat on gitter](https://gitter.im/JetBrains/ideavim)
-* [Unofficial discord server](https://jb.gg/bi6zp7)
+* [IdeaVim Channel](https://jb.gg/bi6zp7) on [JetBrains Server](https://discord.gg/jetbrains)
 * [Plugin homepage](https://plugins.jetbrains.com/plugin/164-ideavim)
 * [Changelog](CHANGES.md)
 * [Contributors listing](AUTHORS.md)
 
-[teamcity-build-status]: https://teamcity.jetbrains.com/viewType.html?buildTypeId=IdeaVim_TestsForIntelliJ20201&guest=1
-[teamcity-build-status-svg]: https://teamcity.jetbrains.com/app/rest/builds/buildType:(id:IdeaVim_TestsForIntelliJ20201)/statusIcon.svg?guest=1
+[teamcity-build-status]: https://teamcity.jetbrains.com/viewType.html?buildTypeId=IdeaVim_TestsForIntelliJEAP&guest=1
+[teamcity-build-status-svg]: https://teamcity.jetbrains.com/app/rest/builds/buildType:(id:IdeaVim_TestsForIntelliJEAP)/statusIcon.svg?guest=1

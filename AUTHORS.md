@@ -10,10 +10,6 @@ The original author:
 
 The current maintainers:
 
-* [![icon][mail]](mailto:andrey.vlasovskikh@gmail.com)
-  [![icon][github]](https://github.com/vlasovskikh)
-  &nbsp;
-  Andrey Vlasovskikh
 * [![icon][mail]](mailto:alexpl292@gmail.com)
   [![icon][github]](https://github.com/AlexPl292)
   &nbsp;
@@ -25,22 +21,59 @@ Previous maintainers:
   [![icon][github]](https://github.com/olegs)
   &nbsp;
   Oleg Shpynov
+* [![icon][mail]](mailto:andrey.vlasovskikh@gmail.com)
+  [![icon][github]](https://github.com/vlasovskikh)
+  &nbsp;
+  Andrey Vlasovskikh
 
 Contributors:
+
 * [![icon][mail]](mailto:yole@jetbrains.com)
   [![icon][github]](https://github.com/yole)
   &nbsp;
   Dmitry Jemerov
+* [![icon][mail]](mailto:tony.kay@gmail.com)
+  [![icon][github]](https://github.com/awkay)
+  &nbsp;
+  Tony Kay
+* [![icon][mail]](mailto:jamescmartinez@gmail.com)
+  [![icon][github]](https://github.com/jamescmartinez)
+  &nbsp;
+  James Martinez
+* [![icon][mail]](mailto:almas337519@gmail.com)
+  [![icon][github]](https://github.com/strogiyotec)
+  &nbsp;
+  strogiyotec
+* [![icon][mail]](mailto:raimon49@hotmail.com)
+  [![icon][github]](https://github.com/raimon49)
+  &nbsp;
+  raimon
+* [![icon][mail]](mailto:agrsbm@gmail.com)
+  [![icon][github-off]](#)
+  &nbsp;
+  Alexander Griesbaum
+* [![icon][mail]](mailto:manwe64@gmail.com)
+  [![icon][github]](https://github.com/baldrs)
+  &nbsp;
+  Baldrs
+* [![icon][mail]](mailto:yury@shurup.com)
+  [![icon][github]](https://github.com/zyv)
+  &nbsp;
+  Yury V. Zaytsev
+* [![icon][mail]](mailto:jflorian@doubledog.org)
+  [![icon][github]](https://github.com/jflorian)
+  &nbsp;
+  John Florian
 * [![icon][mail]](mailto:marquis@marquiswang.com)
   [![icon][github]](https://github.com/marquiswang)
   &nbsp;
   Marquis Wang
 * [![icon][mail]](mailto:madgnome@gmail.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/madgnome)
   &nbsp;
   Julien Hoarau  
 * [![icon][mail]](mailto:masanobu.imai@gmail.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/masanobuimai)
   &nbsp;
   Masanobu Imai
 * [![icon][mail]](mailto:poxvuibr@gmail.com)
@@ -56,7 +89,7 @@ Contributors:
   &nbsp;
   John Lindquist
 * [![icon][mail]](mailto:iklotzko@ltech.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/iklotzko)
   &nbsp;
   Ira Klotzko
 * [![icon][mail]](mailto:alex@selesse.com)
@@ -64,7 +97,7 @@ Contributors:
   &nbsp;
   Alex Selesse
 * [![icon][mail]](mailto:dbennett@palantir.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/dathanb)
   &nbsp;
   Dathan Bennett
 * [![icon][mail]](mailto:kphayen@gmail.com)
@@ -76,11 +109,11 @@ Contributors:
   &nbsp;
   Alexey Shmalko
 * [![icon][mail]](mailto:a.m.brookins@gmail.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/abrookins)
   &nbsp;
   Andrew Brookins
 * [![icon][mail]](mailto:changwang83@gmail.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/changwang)
   &nbsp;
   Chang Wang
 * [![icon][mail]](mailto:josejaime.sanchez@gmail.com)
@@ -88,19 +121,19 @@ Contributors:
   &nbsp;
   Jaime Sanchez
 * [![icon][mail]](mailto:thomas@homburg.dk)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/homburg)
   &nbsp;
   Thomas B Homburg
 * [![icon][mail]](mailto:smartbomb@server.fake)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/smartbomb)
   &nbsp;
   smartbomb
 * [![icon][mail]](mailto:tuomas.tynkkynen@iki.fi)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/dezgeg)
   &nbsp;
   Tuomas Tynkkynen
 * [![icon][mail]](mailto:jackson@donorschoose.org)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/jdpopkin)
   &nbsp;
   Jackson Popkin
 * [![icon][mail]](mailto:yuyuyu1999@gmail.com)
@@ -108,7 +141,7 @@ Contributors:
   &nbsp;
   Teruo Kunihiro
 * [![icon][mail]](mailto:lubashka.994@mail.ru)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/lubba)
   &nbsp;
   Liubov Paina
 * [![icon][mail]](mailto:me@dhleong.net)
@@ -132,11 +165,11 @@ Contributors:
   &nbsp;
   Pavel Fatin
 * [![icon][mail]](mailto:tietyt@gmail.com)
-  [![icon][github-off]](#)
+  [![icon][github-off]](https://github.com/DanKaplanSES)
   &nbsp;
   tieTYT
 * [![icon][mail]](mailto:nickgieschen@gmail.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/nickgieschen)
   &nbsp;
   Nick Gieschen
 * [![icon][mail]](mailto:ikenox@gmail.com)
@@ -148,11 +181,11 @@ Contributors:
   &nbsp;
   Maximilian Luz
 * [![icon][mail]](mailto:vparfinenko@excelsior-usa.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/cypok)
   &nbsp;
   Vladimir Parfinenko
 * [![icon][mail]](mailto:hassmann@hwdev.de)
-  [![icon][github-off]](#)
+  [![icon][github-off]](https://github.com/lumie1337)
   &nbsp;
   Florian Hassmann
 * [![icon][mail]](mailto:jpalus@fastmail.com)
@@ -160,7 +193,7 @@ Contributors:
   &nbsp;
   Jan Palus
 * [![icon][mail]](mailto:kpetrov@ripe.net)
-  [![icon][github-off]](#)
+  [![icon][github-off]](https://github.com/constpetrov)
   &nbsp;
   Konstantin Petrov
 * [![icon][mail]](mailto:ya-ikmik2012@yandex.ru)
@@ -187,12 +220,8 @@ Contributors:
   [![icon][github]](https://github.com/johngrib)
   &nbsp;
   John Grib
-* [![icon][mail]](mailto:hild@b4mad.net)
-  [![icon][github-off]](#)
-  &nbsp;
-  Marcel Hild
 * [![icon][mail]](mailto:vedranb@gmail.com)
-  [![icon][github-off]](#)
+  [![icon][github]](https://github.com/vedran)
   &nbsp;
   Vedran Budimcic
 * [![icon][mail]](mailto:andreigasparovici1@gmail.com)
@@ -207,10 +236,13 @@ Contributors:
   [![icon][github]](https://github.com/TonyArra)
   &nbsp;
   Tony Arra
-* [![icon][mail]](mailto:bradziolko@gmail.com)
-  [![icon][github]](https://github.com/bradziolko)
+* [![icon][mail]](mailto:mj@ziolko.dev)
+  [![icon][github]](https://github.com/mjziolko)
   &nbsp;
-  Brad Ziolko
+  Madeline Ziolko
+  [Original contribution from:
+  [![icon][mail]](mailto:bradziolko@gmail.com)
+  [![icon][github]](https://github.com/bradziolko)]
 * [![icon][mail]](mailto:sumoooru2@gmail.com)
   [![icon][github]](https://github.com/sumoooru2)
   &nbsp;
@@ -283,10 +315,6 @@ Contributors:
   [![icon][github]](https://github.com/angelbot)
   &nbsp;
   John Weigel
-* [![icon][mail]](mailto:kevinz@weghst.com)
-  [![icon][github]](https://github.com/kevin70)
-  &nbsp;
-  kk
 * [![icon][mail]](mailto:runforprogram@163.com)
   [![icon][github]](https://github.com/runforprogram)
   &nbsp;
@@ -319,13 +347,133 @@ Contributors:
   [![icon][github]](https://github.com/yaohui-wyh)
   &nbsp;
   Yaohui Wang
+* [![icon][mail]](mailto:iain.ballard@bjss.com)
+  [![icon][github]](https://github.com/i-e-b)
+  &nbsp;
+  Iain Ballard
+* [![icon][mail]](mailto:brandoncc@gmail.com)
+  [![icon][github]](https://github.com/brandoncc)
+  &nbsp;
+  Brandon Conway
+* [![icon][mail]](mailto:ga@anadoxin.org)
+  [![icon][github]](https://github.com/antekone)
+  &nbsp;
+  Grzegorz Antoniak
+* [![icon][mail]](mailto:shaunpatterson@gmail.com)
+  [![icon][github]](https://github.com/shaunpatterson)
+  &nbsp;
+  Shaun Patterson
+* [![icon][mail]](mailto:vladimir.petrenko@jetbrains.com)
+  [![icon][github]](https://github.com/vladimir-petrenko)
+  &nbsp;
+  Vladimir Petrenko
+* [![icon][mail]](mailto:sergey.vorobyov@jetbrains.com)
+  [![icon][github]](https://github.com/DeveloperHacker)
+  &nbsp;
+  Sergei Vorobyov
+* [![icon][mail]](mailto:daya0576@gmail.com)
+  [![icon][github]](https://github.com/daya0576)
+  &nbsp;
+  大牙(Henry Zhu)
+* [![icon][mail]](mailto:mplacek@skilltech.pl)
+  [![icon][github]](https://github.com/MichalPlacek)
+  &nbsp;
+  MichalPlacek
+* [![icon][mail]](mailto:shrikantsharat.k@gmail.com)
+  [![icon][github]](https://github.com/sharat87)
+  &nbsp;
+  Shrikant Sharat Kandula
+* [![icon][mail]](mailto:michal.placek@yandex.com)
+  [![icon][github]](https://github.com/MichalPlacek)
+  &nbsp;
+  Michal Placek
+* [![icon][mail]](mailto:eugene.nizienko@jetbrains.com)
+  [![icon][github]](https://github.com/nizienko)
+  &nbsp;
+  eugene nizienko
+* [![icon][mail]](mailto:x@lipp.fi)
+  [![icon][github]](https://github.com/lippfi)
+  &nbsp;
+  Filipp Vakhitov
+* [![icon][mail]](mailto:yzeiri.1@osu.edu)
+  [![icon][github]](https://github.com/myzeiri)
+  &nbsp;
+  Martin Yzeiri
+* [![icon][mail]](mailto:jeyko1@gmail.com)
+  [![icon][github]](https://github.com/wrightwriter)
+  &nbsp;
+  Petar Guglev
+* [![icon][mail]](mailto:contact@chylex.com)
+  [![icon][github]](https://github.com/chylex)
+  &nbsp;
+  chylex
+* [![icon][mail]](mailto:daniel.egger@gmail.com)
+  [![icon][github]](https://github.com/DanEEStar)
+  &nbsp;
+  DanEEStar
+* [![icon][mail]](mailto:ksrbkevinsuen@gmail.com)
+  [![icon][github]](https://github.com/ksrb)
+  &nbsp;
+  Kevin Suen
+* [![icon][mail]](mailto:michael.schertenleib@inftec.ch)
+  [![icon][github]](https://github.com/cravay)
+  &nbsp;
+  Michael Schertenleib
+* [![icon][mail]](mailto:piotr@near.org)
+  [![icon][github]](https://github.com/pmnoxx)
+  &nbsp;
+  Piotr Mikulski
+* [![icon][mail]](mailto:lonrevip@gmail.com)
+  [![icon][github]](https://github.com/lonre)
+  &nbsp;
+  Lonre Wang
+* [![icon][mail]](mailto:AlexPl292@gmail.com)
+  [![icon][github]](https://github.com/AlexPl292)
+  &nbsp;
+  Alex Pláte
+* [![icon][mail]](mailto:david@dadon.fr)
+  [![icon][github]](https://github.com/ddadon10)
+  &nbsp;
+  David Dadon
+* [![icon][mail]](mailto:hollandpirates@gmail.com)
+  [![icon][github]](https://github.com/PHPirates)
+  &nbsp;
+  Thomas Schouten
+* [![icon][mail]](mailto:sr@mail25.de)
+  [![icon][github]](https://github.com/Vvalter)
+  &nbsp;
+  Simon Rainer
+* [![icon][mail]](mailto:filipp.vakhitov@jetbrains.com)
+  [![icon][github]](https://github.com/lippfi)
+  &nbsp;
+  lippfi
+* [![icon][mail]](mailto:3237686+Runinho@users.noreply.github.com)
+  [![icon][github]](https://github.com/Runinho)
+  &nbsp;
+  Runinho
+* [![icon][mail]](mailto:me@yuhaowen.com)
+  [![icon][github]](https://github.com/adaext)
+  &nbsp;
+  Ada
+
+Previous contributors:
+
+* [![icon][mail]](mailto:hild@b4mad.net)
+  [![icon][github-off]](#)
+  &nbsp;
+  Marcel Hild
+* [![icon][mail]](mailto:kevinz@weghst.com)
+  [![icon][github]](https://github.com/kevin70)
+  &nbsp;
+  kk
+
                         
 If you are a contributor and your name is not listed here, feel free to
 contact the maintainers.
 
 <a href="https://icons8.com">Icons by Icons8</a>
 
-[mail]: resources/icons/mail.png
-[github]: resources/icons/github.png
+[mail]: assets/icons/mail.png
+[github]: assets/icons/github.png
 
-[github-off]: resources/icons/github-off.png
+[github-off]: assets/icons/github-off.png
