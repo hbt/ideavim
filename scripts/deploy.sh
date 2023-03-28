@@ -5,7 +5,6 @@
 set -e
 
 ./gradlew buildPlugin
-ction com.hbtlabs.SwitchTab3Action
 
 
 cp build/distributions/IdeaVim-SNAPSHOT.zip /home/hassen/.local/share/JetBrains/IntelliJIdea2022.3/ideavim.zip
@@ -14,3 +13,5 @@ rm -rf IdeaVim &> /dev/null
 
 unzip ideavim.zip
 
+
+# // TODO(hbt) NEXT apply to all IDEs
