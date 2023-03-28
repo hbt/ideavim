@@ -279,6 +279,11 @@ abstract class VimRegisterGroupBase : VimRegisterGroup {
         text += '\n'.toString()
       }
 
+      // Note(hbt) by default, store unnamed yanks into clipboard
+      if(!isDelete && lastRegisterChar === RegisterConstants.UNNAMED_REGISTER) {
+        lastRegisterChar = RegisterConstants.CLIPBOARD_REGISTERS[0]
+      }
+
       return storeTextInternal(editor, range, text, type, lastRegisterChar, isDelete)
     }
 
