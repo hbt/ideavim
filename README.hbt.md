@@ -8,6 +8,12 @@
 
 Note: If you pick a different revision, it might fail until target ideaVersion is specified. 
 
+## quick build from scratch
+
+- dc up --build
+
+It doesn't cache the gradle stuff, so super slow. But useful on VMs.
+
 
 ## for dev
 
