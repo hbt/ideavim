@@ -22,5 +22,3 @@ for dir in /home/hassen/.local/share/JetBrains/*2022*; do
     unzip ideavim.zip
   fi
 done
-
-# // TODO(hbt) NEXT add the build zip to the release in github
