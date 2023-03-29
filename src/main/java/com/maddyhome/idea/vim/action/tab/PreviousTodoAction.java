@@ -21,7 +21,6 @@ package com.maddyhome.idea.vim.action.tab;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.project.Project;
 import com.maddyhome.idea.vim.action.hbtlabs.lib.ToDoCommonAction;
-import org.apache.log4j.Level;
 
 import java.util.ArrayList;
 
@@ -31,7 +30,7 @@ public class PreviousTodoAction extends ToDoCommonAction {
   public void actionPerformed(AnActionEvent e) {
 
     Project project = e.getProject();
-    ArrayList todosMap = todosMap = buildList(project);
+    ArrayList todosMap = buildList(project);
 
     if (todosMap.size() == 0) {
       return;

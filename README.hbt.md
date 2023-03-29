@@ -3,7 +3,7 @@
 - clone
 - download ultimate idea
 - go to Help > About > copy version e.g (223.8836.41)
-- open gradle.properties and fix `ideaVersion=223.8836.41` to target platform
+- open gradle.properties and fix `ideaVersion=223.8836.41` to target platform. This important because for most commits, the build will fail if you don't specify the target platform.
 - ./gradlew buildPlugin
 
 Note: If you pick a different revision, it might fail until target ideaVersion is specified. 

@@ -22,8 +22,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.maddyhome.idea.vim.action.hbtlabs.lib.ToDoCommonAction;
-import com.maddyhome.idea.vim.ui.ex.ExEntryPanel;
-import org.apache.log4j.Level;
 
 import java.util.ArrayList;
 

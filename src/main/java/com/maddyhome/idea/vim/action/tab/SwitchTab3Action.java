@@ -30,18 +30,20 @@ import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.maddyhome.idea.vim.api.ExecutionContext;
 import com.maddyhome.idea.vim.api.VimEditor;
-import org.apache.log4j.Level;
 import org.jdom.Element;
 
 import static com.maddyhome.idea.vim.api.VimInjectorKt.injector;
 
 public class SwitchTab3Action extends AnAction {
-  private Logger logger = Logger.getInstance(SwitchTab3Action.class);
+  private final Logger logger = Logger.getInstance(SwitchTab3Action.class);
 
   @Override
   public void actionPerformed(AnActionEvent e) {
 
     Project project = e.getProject();
+    if(project == null) {
+      return;
+    }
 
     // Note(hbt) cant call Switcher.SwitcherPanel
     // so this is a hack to remove the recent files from the history, replace them with the active tabs, display the recent files switcher then put the recent files back

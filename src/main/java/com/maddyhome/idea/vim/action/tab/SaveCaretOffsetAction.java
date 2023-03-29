@@ -27,7 +27,6 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.vfs.VirtualFile;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -39,7 +38,7 @@ public class SaveCaretOffsetAction extends AnAction {
   public void actionPerformed(AnActionEvent e) {
     DataContext dataContext = e.getDataContext();
     Editor editor = CommonDataKeys.EDITOR.getData(dataContext);
-    if (editor.getDocument() != null) {
+    if (editor != null) {
       VirtualFile file = FileDocumentManager.getInstance().getFile(editor.getDocument());
       if (file != null) {
         int offset = editor.getCaretModel().getCurrentCaret().getOffset();
@@ -48,7 +47,7 @@ public class SaveCaretOffsetAction extends AnAction {
         int column = editor.getCaretModel().getCurrentCaret().getLogicalPosition().column;
 
         try {
-          FileWriter fw = new FileWriter(new File("/tmp/ideavim-caret-position.txt"));
+          FileWriter fw = new FileWriter("/tmp/ideavim-caret-position.txt");
           fw.write(filepath + "\n" + offset + "\n" + line + "\n" + column);
           fw.close();
         }
