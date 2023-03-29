@@ -12,7 +12,8 @@ cd "$SCRIPT_PATH"/.. || exit 1
 
 ./gradlew buildPlugin
 
-for dir in /home/hassen/.local/share/JetBrains/*2022*; do
+#for dir in ~/.local/share/JetBrains/*202[23]*; do
+for dir in ~/.local/share/JetBrains/*2022*; do
   if [[ -d "$dir" ]]; then
     echo "Installing IdeaVim in $dir"
     cd "$SCRIPT_PATH"/.. || exit 1
@@ -22,3 +23,4 @@ for dir in /home/hassen/.local/share/JetBrains/*2022*; do
     unzip ideavim.zip
   fi
 done
+
