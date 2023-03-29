@@ -23,6 +23,15 @@ It is important to distinguish EAP from traditional pre-release software.
 Please note that the quality of EAP versions may at times be way below even
 usual beta standards.
 
+## To Be Released
+
+### Fixes:
+* [VIM-2833](https://youtrack.jetbrains.com/issue/VIM-2833) Fix rare deadlock during put in insert mode from clipboard
+* [VIM-2813](https://youtrack.jetbrains.com/issue/VIM-2813) Migrate update checker to VimStandalonePluginUpdateChecker
+* [VIM-758](https://youtrack.jetbrains.com/issue/VIM-758) Support d mappings
+* [VIM-2797](https://youtrack.jetbrains.com/issue/VIM-2797) Introduce variable to mute default argtextobj mappings
+* [VIM-2776](https://youtrack.jetbrains.com/issue/VIM-2776) Use filename index for file search
+
 ## 2.1.0, 2023-01-10
 
 ### Features:
