@@ -2,11 +2,24 @@
 
 - clone
 - download ultimate idea
-- open project dir
-- right click build.gradle file
-- import gradle project
-- ctrl + I: gradle window
-- intellij > runIde task
+- go to Help > About > copy version e.g (223.8836.41)
+- open gradle.properties and fix `ideaVersion=223.8836.41` to target platform. This important because for most commits, the build will fail if you don't specify the target platform.
+- ./gradlew buildPlugin
+
+Note: If you pick a different revision, it might fail until target ideaVersion is specified. 
+
+## quick build from scratch
+
+- dc up --build
+
+It doesn't cache the gradle stuff, so super slow. But useful on VMs.
+
+
+## for dev
+
+- ./gradlew runIde
+- or Run > editConfiguration > runIde 
+
 
 
 ## changes
@@ -22,7 +35,7 @@
 - use tail -f /home/hassen/workspace/ideavim/build/idea-sandbox/system/log/idea.log
 
 
-## deploy
+## build zip file
 
 - build > build module ideavim
 
@@ -33,4 +46,9 @@
 - copy build > distributions > ideavim-snapshot.zip
 - open another ide
 - settings > plugins > install from disk
+
+
+or install automatically and restart ide 
+- unzip 
+- copy dir to ~/.local/share/(IDE)/IdeaVim
 

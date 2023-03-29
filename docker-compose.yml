@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  
+  ideavim:
+    build:
+      context: .
+
+    volumes:
+      - .:/mounted
+
+
+

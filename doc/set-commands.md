@@ -38,6 +38,7 @@ The following `:set` commands can appear in `~/.ideavimrc` or be set manually in
                                       acts like startsel is enabled
     
     'matchpairs'     'mps'   pairs of characters that "%" can match
+    'maxmapdepth'    'mmd'   Maximum depth of mappings
     'more'           'more'  When on, listings pause when the whole screen is filled.
     'nrformats'      'nf'    number formats recognized for CTRL-A command
     'number'         'nu'    print the line number in front of each line
@@ -59,11 +60,8 @@ The following `:set` commands can appear in `~/.ideavimrc` or be set manually in
                    ideaselection   when IDE sets a selection      - IdeaVim ONLY
                                    (examples: extend selection, wrap with while, etc.)
 
-                   Deprecated values:
-                   template        ~~please use `idearefactormode` option~~
-                                   when starting a template       - IdeaVim ONLY
-                   refactoring     ~~please use ideaselection~~
-                                   same as ideaselection          - IdeaVim ONLY
+    `startofline`    `sol`       When "on" some commands move the cursor to the first non-blank of the line.
+                                    When off the cursor is kept in the same column (if possible).
 
     'showmode'       'smd'       message on the status line to show current mode
     'showcmd'        'sc'        show (partial) command in the status bar
@@ -104,12 +102,6 @@ The following `:set` commands can appear in `~/.ideavimrc` or be set manually in
     
                   If true, join command will be performed via IDE
                   See wiki/`ideajoin` examples
-
-    `ideastatusbar`  `ideastatusbar` Boolean (default true)
-                  DEPRECATED. Please use `ideastatusicon`
-    
-                  If false, IdeaVim icon won't be shown in the status bar.
-                  Works only from `~/.ideavimrc` after the IDE restart.
                   
     `ideastatusicon`  `ideastatusicon` String(default "enabled")
     
@@ -120,10 +112,11 @@ The following `:set` commands can appear in `~/.ideavimrc` or be set manually in
                  - gray - use the gray version of the icon
                  - disabled - hide the icon
 
-    `ideawaonw`     `ideawaonw` Boolean (default true) [To Be Released]
-                  Read as "idea wa on w". Enables execution of ":wa" (save all) command on ":w" (save).
+    `ideawrite`     `ideawrite` String (default "all")
+                  "file" or "all". Defines the behaviour of ":w" command.
+                  Value "all" enables execution of ":wa" (save all) command on ":w" (save).
                   This feature exists because some IJ options like "Prettier on save" or "ESlint on save"
-                       work only with "save all" action. If this option is on, these actions work
+                       work only with "save all" action. If this option is set to "all", these actions work
                        also with ":w" command.
                   
     `lookupkeys`    `lookupkeys`   List of strings
@@ -135,6 +128,13 @@ The following `:set` commands can appear in `~/.ideavimrc` or be set manually in
                         "<Tab>", "<Down>", "<Up>", "<Enter>", "<Left>", "<Right>",
                         "<C-Down>", "<C-Up>", "<PageUp>", "<PageDown>",
                         "<C-J>", "<C-Q>"
+                     
+    `ideavimsupport`  `ideavimsupport`  List of strings (default "dialog")
+                  
+                  Define the list of additional buffers where IdeaVim is enabled.
+                  
+                  - dialog - enable IdeaVim in dialogs
+                  - singleline - enable IdeaVim in single line editors (not suggested)
 
     ----------
     [1] - cursor keys, <End>, <Home>, <PageUp> and <PageDown>
