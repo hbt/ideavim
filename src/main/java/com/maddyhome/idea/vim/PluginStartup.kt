@@ -30,6 +30,7 @@ class PluginStartup : StartupActivity.DumbAware/*, LightEditCompatible*/ {
 
     // This code should be executed once
     VimPlugin.getInstance().initialize()
+    VimHBTPlugin.initialize()
   }
 }
 
