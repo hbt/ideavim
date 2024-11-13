@@ -33,6 +33,9 @@ It doesn't cache the gradle stuff, so super slow. But useful on VMs.
 - fire up ide instance
 - check IDE log 
 - use tail -f /home/hassen/workspace/ideavim/build/idea-sandbox/system/log/idea.log
+  - or for golang, 
+    - `cd /home/hassen/.cache/JetBrains/GoLand2022.3/log` 
+    - `tail -f idea.log | grep "ideavim.hbt"`
 
 
 ## build zip file
