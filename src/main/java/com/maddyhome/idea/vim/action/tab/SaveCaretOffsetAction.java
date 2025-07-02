@@ -22,6 +22,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
@@ -46,9 +47,14 @@ public class SaveCaretOffsetAction extends AnAction {
         int line = editor.getCaretModel().getCurrentCaret().getLogicalPosition().line;
         int column = editor.getCaretModel().getCurrentCaret().getLogicalPosition().column;
 
+        // Get IDE information
+        ApplicationInfo appInfo = ApplicationInfo.getInstance();
+        String productName = appInfo.getVersionName(); // e.g., "PhpStorm", "GoLand", "IntelliJ IDEA"
+        String productCode = appInfo.getBuild().getProductCode(); // e.g., "PS", "GO", "IU"
+
         try {
           FileWriter fw = new FileWriter("/tmp/ideavim-caret-position.txt");
-          fw.write(filepath + "\n" + offset + "\n" + line + "\n" + column);
+          fw.write(filepath + "\n" + offset + "\n" + line + "\n" + column + "\n" + productName + "\n" + productCode);
           fw.close();
         }
         catch (IOException ioException) {

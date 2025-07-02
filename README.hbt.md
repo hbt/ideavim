@@ -55,3 +55,9 @@ or install automatically and restart ide
 - unzip 
 - copy dir to ~/.local/share/(IDE)/IdeaVim
 
+## deploy to all IDEs
+
+- ./scripts/deploy.sh
+- automatically builds and installs to all 2022 IDEs
+- restarts required to load new plugin
+
